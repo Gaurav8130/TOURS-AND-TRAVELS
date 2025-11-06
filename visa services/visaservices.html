@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MS Tour and Travel Visa Services - Visa Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --card-bg: #ffffff;
+            --body-bg: #f9f9f9;
+            --text-color: #333333;
+            --header-bg: #ffffff;
+            --footer-bg: #2c3e50;
+        }
+
+        .dark-mode {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #34495e;
+            --dark: #ecf0f1;
+            --card-bg: #2d3748;
+            --body-bg: #1a202c;
+            --text-color: #e2e8f0;
+            --header-bg: #2d3748;
+            --footer-bg: #1a202c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--body-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background-color: #c0392b;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .section-title p {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--header-bg);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 0;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a.active {
+            color: var(--secondary);
+        }
+
+        nav ul li a.active::after {
+            width: 100%;
+        }
+
+        /* Auth Dropdown */
+        .auth-dropdown {
+            position: relative;
+        }
+
+        .auth-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .auth-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .auth-toggle i {
+            font-size: 1.2rem;
+            color: var(--secondary);
+        }
+
+        .auth-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            width: 200px;
+            padding: 15px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .auth-dropdown:hover .auth-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .auth-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .auth-menu a:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+            color: var(--secondary);
+        }
+
+        .auth-menu a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 15px;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            color: var(--secondary);
+            transform: rotate(30deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        /* Visa Services Section */
+        .visa-services {
+            background-color: var(--body-bg);
+        }
+
+        .visa-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .visa-card {
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+        }
+
+        .visa-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .visa-card:hover .visa-icon {
+            transform: scale(1.1);
+            color: var(--accent);
+        }
+
+        .visa-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .visa-card p {
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+
+        .visa-details {
+            text-align: left;
+            margin-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding-top: 20px;
+        }
+
+        .visa-details h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .visa-details ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .visa-details ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .visa-details ul li:before {
+            content: "✓";
+            color: var(--success);
+            position: absolute;
+            left: 0;
+        }
+
+        .visa-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .visa-meta span {
+            background-color: var(--light);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--light);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            background: var(--card-bg);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--secondary);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .stars {
+            color: #f1c40f;
+        }
+
+        /* Counter Section */
+        .counter-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .counter-item {
+            padding: 20px;
+        }
+
+        .counter-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .counter-text {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--footer-bg);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .newsletter input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .newsletter input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--accent);
+        }
+
+        .modal-header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-header h2 {
+            color: var(--primary);
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--card-bg);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: var(--transition);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .counter-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="../home/home.html" class="logo"><i class="fas fa-plane"></i>MS Singh Tours & Travels VISA SERVICES</a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/MS SINGH TOURS AND TRAVELS/about us/aboutus.html">About us</a></li>
+                    <li><a href="/MS SINGH TOURS AND TRAVELS/review/review.html">Testimonials</a></li>
+                    <li><a href="/visa services/visaservices.html" class="active">Visa Services</a></li>
+                    <li><a href="/MS SINGH TOURS AND TRAVELS/terms and conditions/Terms&Condition.html">Terms & Conditions</a></li>
+                    <li><a href="/MS SINGH TOURS AND TRAVELS/contact/contact.html">Contact us</a></li>
+                    <li class="auth-dropdown">
+                        <div class="auth-toggle">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Account</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="auth-menu">
+                            <a href="/user information/login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+                            <a href="/user information/signup.html"><i class="fas fa-user-plus"></i> Sign Up</a>
+                            <a href="/user information/userinfo.html"><i class="fas fa-user"></i> My Profile</a>
+                            <a href="/user information/userinfo.html"><i class="fas fa-suitcase"></i>My visa's</a>
+                        </div>
+                    </li>
+                    <li>
+                        <button class="theme-toggle" id="themeToggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Visa Services</h1>
+            <p>Your trusted partner for seamless travel experiences and visa services. We make dream vacations a reality with our comprehensive services. "YOUR FINAL DESTINATION FOR ALL VISA RELATED SERVICES"</p>
+            <div class="hero-buttons">
+                <a href="#visa-services" class="btn btn-accent">Explore Services</a>
+                <a href="/MS SINGH TOURS AND TRAVELS/review/review.html" class="btn">Reviews</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visa Services Section -->
+    <section id="visa-services" class="visa-services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Visa Services</h2>
+                <p>We provide comprehensive visa solutions to make your international travel smooth and hassle-free</p>
+            </div>
+            <div class="visa-grid">
+                <div class="visa-card card">
+                    <div class="visa-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Work Visa</h3>
+                    <p>Get your work visa approved quickly with our expert assistance and documentation support.</p>
+                    <div class="visa-meta">
+                        <span><i class="far fa-clock"></i> 10-15 Working days</span>
+                        <span><i class="fas fa-file-alt"></i> Multiple entry</span>
+                    </div>
+                    <div class="visa-details">
+                        <h4>Requirements:</h4>
+                        <ul>
+                            <li>Valid passport with 6 months validity</li>
+                            <li>Employment contract</li>
+                            <li>Educational certificates</li>
+                            <li>Proof of financial means</li>
+                            <li>Medical insurance</li>
+                        </ul>
+                    </div>
+                    <a href="/visa services/visa types/workvisa.html" class="btn btn-accent">Apply Now</a>
+                </div>
+                <div class="visa-card card">
+                    <div class="visa-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Dependent Visa</h3>
+                    <p>Join your family members abroad with our dependent visa processing services.</p>
+                    <div class="visa-meta">
+                        <span><i class="far fa-clock"></i> 10-12 Days</span>
+                        <span><i class="fas fa-file-alt"></i> Family sponsorship</span>
+                    </div>
+                    <div class="visa-details">
+                        <h4>Requirements:</h4>
+                        <ul>
+                            <li>Valid passport of dependent</li>
+                            <li>Proof of relationship</li>
+                            <li>Sponsor's financial documents</li>
+                            <li>Accommodation proof</li>
+                            <li>Medical insurance</li>
+                        </ul>
+                    </div>
+                    <a href="/visa services/visa types/dependentvisa.html" class="btn btn-accent">Apply Now</a>
+                </div>
+                <div class="visa-card card">
+                    <div class="visa-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Resident Visa</h3>
+                    <p>Secure your long-term stay in your desired country with our resident visa services.</p>
+                    <div class="visa-meta">
+                        <span><i class="far fa-clock"></i> 9-16 Days</span>
+                        <span><i class="fas fa-file-alt"></i> Long-term stay</span>
+                    </div>
+                    <div class="visa-details">
+                        <h4>Requirements:</h4>
+                        <ul>
+                            <li>Valid passport</li>
+                            <li>Proof of accommodation</li>
+                            <li>Financial stability proof</li>
+                            <li>Clean criminal record</li>
+                            <li>Health insurance</li>
+                        </ul>
+                    </div>
+                    <a href="/visa services/visa types/residencevisa.html" class="btn btn-accent">Apply Now</a>
+                </div>
+                <div class="visa-card card">
+                    <div class="visa-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Electronic Visa</h3>
+                    <p>Get your e-visa quickly with our streamlined online application process.</p>
+                    <div class="visa-meta">
+                        <span><i class="far fa-clock"></i> 7 Days</span>
+                        <span><i class="fas fa-file-alt"></i> Online application</span>
+                    </div>
+                    <div class="visa-details">
+                        <h4>Requirements:</h4>
+                        <ul>
+                            <li>Scanned passport copy</li>
+                            <li>Digital photograph</li>
+                            <li>Travel itinerary</li>
+                            <li>Proof of accommodation</li>
+                            <li>Payment method</li>
+                        </ul>
+                    </div>
+                    <a href="/visa services/visa types/electronicvisa.html" class="btn btn-accent">Apply Now</a>
+                </div>
+                <div class="visa-card card">
+                    <div class="visa-icon">
+                        <i class="fas fa-suitcase-rolling"></i>
+                    </div>
+                    <h3>Travelers Visa</h3>
+                    <p>Explore the world with our tourist visa services for hassle-free travel experiences.</p>
+                    <div class="visa-meta">
+                        <span><i class="far fa-clock"></i> 4 Days</span>
+                        <span><i class="fas fa-file-alt"></i> Short-term stay</span>
+                    </div>
+                    <div class="visa-details">
+                        <h4>Requirements:</h4>
+                        <ul>
+                            <li>Valid passport</li>
+                            <li>Travel itinerary</li>
+                            <li>Proof of financial means</li>
+                            <li>Hotel bookings</li>
+                            <li>Return flight ticket</li>
+                        </ul>
+                    </div>
+                    <a href="/visa services/visa types/touristvisa.html" class="btn btn-accent">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Counter Section -->
+    <section class="counter-section">
+        <div class="container">
+            <div class="counter-grid">
+                <div class="counter-item">
+                    <div class="counter-number" data-count="10482">10482+</div>
+                    <div class="counter-text">Visas Processed</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" data-count="147">150+</div>
+                    <div class="counter-text">Countries Covered</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" data-count="25">25+</div>
+                    <div class="counter-text">Years Experience</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" data-count="99">99%</div>
+                    <div class="counter-text">Success Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Customers Say</h2>
+                <p>Don't just take our word for it - hear from our satisfied travelers</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "MS Singh Tour and Travel Visa Services made my work visa process so smooth! I got my visa in just 10 days. Highly recommended!"
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Doe" class="author-img">
+                        <div class="author-info">
+                            <h4>Rajan Gautam</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The dependent visa process was handled professionally. They guided us through every step and made sure all documents were perfect."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Jane Smith" class="author-img">
+                        <div class="author-info">
+                            <h4>Bhumi Kumari</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "I was hesitant about the e-visa process, but MS Singh Tour and Travel Visa Services made it incredibly easy. Got my visa in just 3 days!"
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Robert Johnson" class="author-img">
+                        <div class="author-info">
+                            <h4>Garv Gupta</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MS Singh Tours and Travels Visa Services</h3>
+                    <p>Your trusted partner for seamless visa services. We make dream vacations a reality with our comprehensive services.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/visa services/visaservices.html">Visa Services</a></li>
+                        <li><a href="/MS SINGH TOURS AND TRAVELS/review/review.html">Reviews</a></li>
+                        <li><a href="/MS SINGH TOURS AND TRAVELS/contact/contact.html">Contact us</a></li>
+                        <li><a href="/MS SINGH TOURS AND TRAVELS/about us/aboutus.html">About Us</a></li>
+                        <li><a href="/MS SINGH TOURS AND TRAVELS/terms and conditions/Terms&Condition.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> House no.8,Gali no.2,Vipin Garden Extension,Uttam Nagar,New Delhi-110059</li>
+                        <li><i class="fas fa-phone"></i> +91 9711522876</li>
+                        <li><i class="fas fa-envelope"></i> globalvisaservicesgvs8@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get special offers and travel tips</p>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Your email address">
+                        <button class="btn">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 MS Tour and Travel Visa Services. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <button class="modal-close" id="loginClose">&times;</button>
+            <div class="modal-header">
+                <h2>Login to Your Account</h2>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-accent" style="width: 100%;">Login</button>
+            </form>
+            <p style="text-align: center; margin-top: 15px;">Don't have an account? <a href="#signup" style="color: var(--secondary);">Sign up</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+
+        // Theme toggle - Fixed implementation
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const icon = themeToggle.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+            
+            // Save theme preference to localStorage
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggle.querySelector('i').classList.remove('fa-moon');
+            themeToggle.querySelector('i').classList.add('fa-sun');
+        }
+
+        // Sticky header on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '5px 0';
+                header.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.padding = '15px 0';
+                header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Modal functionality
+        const loginModal = document.getElementById('loginModal');
+        const loginClose = document.getElementById('loginClose');
+        
+        document.querySelector('a[href="#login"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            loginModal.style.display = 'flex';
+        });
+        
+        loginClose.addEventListener('click', function() {
+            loginModal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', function(e) {
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+        });
+
+        // Form validation
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (email && password) {
+                alert('Login successful!');
+                loginModal.style.display = 'none';
+                // In a real application, you would send this data to a server
+            } else {
+                alert('Please fill in all fields');
+            }
+        });
+
+        // Animated counters
+        const counters = document.querySelectorAll('.counter-number');
+        const speed = 200;
+
+        const animateCounter = () => {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-count');
+                const count = +counter.innerText;
+                const increment = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(animateCounter, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        };
+
+        // Start counter animation when section is in view
+        const counterSection = document.querySelector('.counter-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(counterSection);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

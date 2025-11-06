@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews - MS Tour and Travel Visa Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --card-bg: #ffffff;
+            --body-bg: #f9f9f9;
+            --text-color: #333333;
+            --header-bg: #ffffff;
+            --footer-bg: #2c3e50;
+        }
+
+        .dark-mode {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #34495e;
+            --dark: #ecf0f1;
+            --card-bg: #2d3748;
+            --body-bg: #1a202c;
+            --text-color: #e2e8f0;
+            --header-bg: #2d3748;
+            --footer-bg: #1a202c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--body-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background-color: #c0392b;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .section-title p {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--header-bg);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 0;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a.active {
+            color: var(--secondary);
+        }
+
+        nav ul li a.active::after {
+            width: 100%;
+        }
+
+        /* Auth Dropdown */
+        .auth-dropdown {
+            position: relative;
+        }
+
+        .auth-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .auth-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .auth-toggle i {
+            font-size: 1.2rem;
+            color: var(--secondary);
+        }
+
+        .auth-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            width: 200px;
+            padding: 15px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .auth-dropdown:hover .auth-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .auth-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .auth-menu a:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+            color: var(--secondary);
+        }
+
+        .auth-menu a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 15px;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            color: var(--secondary);
+            transform: rotate(30deg);
+        }
+
+        /* Reviews Page Specific Styles */
+        .reviews-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2012&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 150px 0 80px;
+            color: white;
+            text-align: center;
+        }
+
+        .reviews-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .reviews-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Review Filters */
+        .review-filters {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .filter-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .filter-group {
+            margin-bottom: 15px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .filter-select {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        .rating-filter {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .rating-btn {
+            background: var(--light);
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .rating-btn.active {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        .rating-btn:hover {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        /* Reviews Grid */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            background: var(--card-bg);
+            position: relative;
+        }
+
+        .review-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--secondary);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .reviewer-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .reviewer-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .review-date {
+            font-size: 0.85rem;
+            color: var(--text-color);
+            opacity: 0.7;
+        }
+
+        .review-rating {
+            display: flex;
+            gap: 5px;
+        }
+
+        .star {
+            color: #ddd;
+        }
+
+        .star.filled {
+            color: #f1c40f;
+        }
+
+        .review-text {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            position: relative;
+            z-index: 1;
+        }
+
+        .review-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-color);
+            opacity: 0.7;
+        }
+
+        .review-package {
+            font-weight: 500;
+        }
+
+        /* Review Stats */
+        .review-stats {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .rating-distribution {
+            margin-top: 20px;
+        }
+
+        .rating-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .rating-label {
+            width: 100px;
+            font-weight: 500;
+        }
+
+        .rating-progress {
+            flex: 1;
+            height: 10px;
+            background: var(--light);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .rating-fill {
+            height: 100%;
+            background: var(--secondary);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            gap: 10px;
+        }
+
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: var(--card-bg);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .page-btn.active {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        .page-btn:hover:not(.active) {
+            background: var(--light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--footer-bg);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .newsletter input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .newsletter input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .reviews-hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .reviews-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--card-bg);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: var(--transition);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .reviews-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .stat-value {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo"><i class="fas fa-plane"></i>MS Tours Singh and Travels VISA SERVICES</a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/MS SINGH TOURS AND TRAVELS/about us/aboutus.html">About Us</a></li>
+                    <li><a href="/MS SINGH TOURS AND TRAVELS/review/review.html">Testimonials</a></li>
+                    <li><a href="/visa services/visaservices.html">Visa Services</a></li>
+                    <li><a href="/MS SINGH TOURS AND TRAVELS/terms and conditions/Terms&Condition.html">Terms & Conditions</a></li>
+                    <li><a href="/MS SINGH TOURS AND TRAVELS/contact/contact.html">Contact Us</a></li>
+                    <li class="auth-dropdown">
+                        <div class="auth-toggle">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Account</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="auth-menu">
+                            <a href="/user information/login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+                            <a href="/user information/signup.html"><i class="fas fa-user-plus"></i> Sign Up</a>
+                            <a href="/user information/userinfo.html"><i class="fas fa-user"></i> My Profile</a>
+                            <a href="/user information/userinfo.html"><i class="fas fa-suitcase"></i>My visa's</a>
+                        </div>
+                    </li>
+                    <li>
+                        <button class="theme-toggle" id="themeToggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Reviews Hero Section -->
+    <section class="reviews-hero">
+        <div class="container">
+            <h1>Customer Reviews</h1>
+            <p>See what our customers are saying about their experiences with MS Tour and Travel Visa Services</p>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <div class="container">
+            <div class="review-stats">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value">4.8</div>
+                        <div class="stat-label">Average Rating</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">1,247</div>
+                        <div class="stat-label">Total Reviews</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">98%</div>
+                        <div class="stat-label">Would Recommend</div>
+                    </div>
+                </div>
+                
+                <div class="rating-distribution">
+                    <div class="rating-bar">
+                        <div class="rating-label">5 Stars</div>
+                        <div class="rating-progress">
+                            <div class="rating-fill" style="width: 75%;"></div>
+                        </div>
+                        <span style="margin-left: 10px;">75%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <div class="rating-label">4 Stars</div>
+                        <div class="rating-progress">
+                            <div class="rating-fill" style="width: 18%;"></div>
+                        </div>
+                        <span style="margin-left: 10px;">18%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <div class="rating-label">3 Stars</div>
+                        <div class="rating-progress">
+                            <div class="rating-fill" style="width: 5%;"></div>
+                        </div>
+                        <span style="margin-left: 10px;">5%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <div class="rating-label">2 Stars</div>
+                        <div class="rating-progress">
+                            <div class="rating-fill" style="width: 1%;"></div>
+                        </div>
+                        <span style="margin-left: 10px;">1%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <div class="rating-label">1 Star</div>
+                        <div class="rating-progress">
+                            <div class="rating-fill" style="width: 1%;"></div>
+                        </div>
+                        <span style="margin-left: 10px;">1%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-filters">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="sortBy">Sort By</label>
+                        <select id="sortBy" class="filter-select">
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="highest">Highest Rated</option>
+                            <option value="lowest">Lowest Rated</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="packageFilter">Visa Type</label>
+                        <select id="packageFilter" class="filter-select">
+                            <option value="all">Visa Type</option>
+                            <option value="Work Visa">Work Visa</option>
+                            <option value="Dependent Visa">Dependent Visa</option>
+                            <option value="Electronic Visa">Electronic Visa</option>
+                            <option value="Tourist visa">Tourist Visa</option>
+                            <option value="Residence Visa">Residence Visa</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <label>Filter by Rating</label>
+                    <div class="rating-filter">
+                        <button class="rating-btn active" data-rating="all">All Ratings</button>
+                        <button class="rating-btn" data-rating="5">
+                            <i class="fas fa-star"></i> 5 Stars
+                        </button>
+                        <button class="rating-btn" data-rating="4">
+                            <i class="fas fa-star"></i> 4 Stars
+                        </button>
+                        <button class="rating-btn" data-rating="3">
+                            <i class="fas fa-star"></i> 3 Stars
+                        </button>
+                        <button class="rating-btn" data-rating="2">
+                            <i class="fas fa-star"></i> 2 Stars
+                        </button>
+                        <button class="rating-btn" data-rating="1">
+                            <i class="fas fa-star"></i> 1 Star
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="reviews-grid" id="reviewsContainer">
+                <!-- Reviews will be loaded here by JavaScript -->
+            </div>
+
+            <div class="pagination">
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">4</button>
+                <button class="page-btn">5</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MS Tour and Travel Visa Services</h3>
+                    <p>Your trusted partner for seamless travel experiences. We make dream vacations a reality with our comprehensive services.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/visa services/visaservices.html">visa Services</a></li>
+                        <li><a href="/MS SINGH TOURS AND TRAVELS/review/review.html">reviews</a></li>
+                        <li><a href="/MS SINGH TOURS AND TRAVELS/contact/contact.html">contact us</a></li>
+                        <li><a href="/MS SINGH TOURS AND TRAVELS/about us/aboutus.html">About Us</a></li>
+                        <li><a href="/MS SINGH TOURS AND TRAVELS/terms and conditions/Terms&Condition.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i>House no.8,Gali no.2,Vipin Garden Extension,Uttam Nagar,New Delhi-110059</li>
+                        <li><i class="fas fa-phone"></i>+91 9711522876</li>
+                        <li><i class="fas fa-envelope"></i>globalvisaservicesgvs8@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get special offers and travel tips</p>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Your email address">
+                        <button class="btn">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 MS Tour and Travel Visa Services. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample reviews data
+        const reviews = [
+            {
+                id: 1,
+                name: "Aishwarya Panday",
+                image: "https://randomuser.me/api/portraits/women/32.jpg",
+                rating: 5,
+                date: "2023-10-15",
+                package: "Work Visa",
+                text: "MS Tour and Travel made our honeymoon planning so simple! The visa assistance was incredibly helpful, and we got our approvals in record time. The Kerala package was everything we dreamed of and more."
+            },
+            {
+                id: 2,
+                name: "Anand Kumar",
+                image: "https://randomuser.me/api/portraits/men/54.jpg",
+                rating: 4,
+                date: "2023-09-22",
+                package: "Electronic Visa",
+                text: "As a frequent traveler, I've used many services, but MS Tour and Travel stands out. Their attention to detail and customer support is exceptional. The Rajasthan tour was perfectly curated with amazing experiences."
+            },
+            {
+                id: 3,
+                name: "Priya Rajput",
+                image: "https://randomuser.me/api/portraits/women/68.jpg",
+                rating: 5,
+                date: "2023-11-05",
+                package: "Tourist Visa",
+                text: "I was hesitant about booking an international trip online, but MS Tour and Travel exceeded my expectations. The hotel recommendations were perfect, and the travel insurance gave me peace of mind throughout my Indian adventure."
+            },
+            {
+                id: 4,
+                name: "Daksh Sharma",
+                image: "https://randomuser.me/api/portraits/men/22.jpg",
+                rating: 3,
+                date: "2023-08-30",
+                package: "Dependent Visa",
+                text: "The Ladakh trip was mostly great, but there were some issues with hotel accommodations. The team was responsive and tried to resolve the problems, which I appreciate."
+            },
+            {
+                id: 5,
+                name: "Priya Sharma",
+                image: "https://randomuser.me/api/portraits/women/44.jpg",
+                rating: 5,
+                date: "2023-10-08",
+                package: "Resident Visa",
+                text: "An absolutely transformative experience! The Varanasi spiritual tour was well-organized and deeply meaningful. The guides were knowledgeable and compassionate."
+            },
+            {
+                id: 6,
+                name: "Ritik Verma",
+                image: "https://randomuser.me/api/portraits/men/67.jpg",
+                rating: 2,
+                date: "2023-07-12",
+                package: "Work Visa",
+                text: "Unfortunately, our Goa trip didn't meet expectations. There were multiple issues with transportation and the hotel wasn't as described. Customer service was slow to respond to our concerns."
+            },
+            {
+                id: 7,
+                name: "Laila Thakur",
+                image: "https://randomuser.me/api/portraits/women/56.jpg",
+                rating: 5,
+                date: "2023-11-18",
+                package: "Electronic Visa",
+                text: "The houseboat experience in Kerala was magical! Everything from the food to the scenery was perfect. MS Tour and Travel made all the arrangements seamlessly."
+            },
+            {
+                id: 8,
+                name: "Devansh Sharma",
+                image: "https://randomuser.me/api/portraits/men/33.jpg",
+                rating: 4,
+                date: "2023-09-05",
+                package: "Tourist Visa",
+                text: "Overall a great experience. The Rajasthan heritage tour was well-paced with a good mix of cultural activities and free time. The visa processing was quicker than expected."
+            },
+            {
+                id: 9,
+                name: "Anita Patel",
+                image: "https://randomuser.me/api/portraits/women/28.jpg",
+                rating: 5,
+                date: "2023-10-25",
+                package: "Work Visa",
+                text: "The Ganga Aarti ceremony in Varanasi was a highlight of my trip to India. MS Tour and Travel arranged everything perfectly, including the visa which I was initially worried about."
+            },
+            {
+                id: 10,
+                name: "Saxam Saxena",
+                image: "https://randomuser.me/api/portraits/men/76.jpg",
+                rating: 1,
+                date: "2023-06-20",
+                package: "Residence Visa",
+                text: "Very disappointed with the Ladakh trip. Multiple issues with accommodations and transportation. Felt like we were rushed through the itinerary without proper guidance."
+            }
+        ];
+
+        // Function to render stars based on rating
+        function renderStars(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= rating) {
+                    stars += '<i class="fas fa-star star filled"></i>';
+                } else {
+                    stars += '<i class="fas fa-star star"></i>';
+                }
+            }
+            return stars;
+        }
+
+        // Function to format date
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        // Function to render reviews
+        function renderReviews(reviewsToRender) {
+            const container = document.getElementById('reviewsContainer');
+            container.innerHTML = '';
+            
+            if (reviewsToRender.length === 0) {
+                container.innerHTML = '<p style="text-align: center; grid-column: 1 / -1;">No reviews match your selected filters.</p>';
+                return;
+            }
+            
+            reviewsToRender.forEach(review => {
+                const reviewCard = document.createElement('div');
+                reviewCard.className = 'review-card card';
+                
+                reviewCard.innerHTML = `
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <img src="${review.image}" alt="${review.name}" class="reviewer-img">
+                            <div class="reviewer-details">
+                                <h4>${review.name}</h4>
+                                <div class="review-date">${formatDate(review.date)}</div>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            ${renderStars(review.rating)}
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        ${review.text}
+                    </div>
+                    <div class="review-meta">
+                        <div class="review-package">${review.package}</div>
+                        <div class="review-id">#${review.id}</div>
+                    </div>
+                `;
+                
+                container.appendChild(reviewCard);
+            });
+        }
+
+        // Function to filter and sort reviews
+        function filterAndSortReviews() {
+            const ratingFilter = document.querySelector('.rating-btn.active').dataset.rating;
+            const packageFilter = document.getElementById('packageFilter').value;
+            const sortBy = document.getElementById('sortBy').value;
+            
+            let filteredReviews = [...reviews];
+            
+            // Filter by rating
+            if (ratingFilter !== 'all') {
+                filteredReviews = filteredReviews.filter(review => review.rating === parseInt(ratingFilter));
+            }
+            
+            // Filter by package
+            if (packageFilter !== 'all') {
+                filteredReviews = filteredReviews.filter(review => 
+                    review.package.toLowerCase().includes(packageFilter.toLowerCase()));
+            }
+            
+            // Sort reviews
+            switch(sortBy) {
+                case 'newest':
+                    filteredReviews.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    break;
+                case 'oldest':
+                    filteredReviews.sort((a, b) => new Date(a.date) - new Date(b.date));
+                    break;
+                case 'highest':
+                    filteredReviews.sort((a, b) => b.rating - a.rating);
+                    break;
+                case 'lowest':
+                    filteredReviews.sort((a, b) => a.rating - b.rating);
+                    break;
+            }
+            
+            renderReviews(filteredReviews);
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Render initial reviews
+            renderReviews(reviews);
+            
+            // Set up filter event listeners
+            document.querySelectorAll('.rating-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.rating-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    filterAndSortReviews();
+                });
+            });
+            
+            document.getElementById('packageFilter').addEventListener('change', filterAndSortReviews);
+            document.getElementById('sortBy').addEventListener('change', filterAndSortReviews);
+            
+            // Mobile menu toggle
+            document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+                document.querySelector('nav ul').classList.toggle('active');
+            });
+            
+            // Theme toggle
+            const themeToggle = document.getElementById('themeToggle');
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                const icon = themeToggle.querySelector('i');
+                if (document.body.classList.contains('dark-mode')) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
+                
+                // Save theme preference to localStorage
+                localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+            });
+
+            // Check for saved theme preference
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeToggle.querySelector('i').classList.remove('fa-moon');
+                themeToggle.querySelector('i').classList.add('fa-sun');
+            }
+            
+            // Sticky header on scroll
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.padding = '5px 0';
+                    header.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.padding = '15px 0';
+                    header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
